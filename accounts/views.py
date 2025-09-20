@@ -38,4 +38,30 @@ class MyLogoutView(View):
     def get(self, request, *args, **kwargs):
         logout(request)  
         return redirect("/")  
+    
+from community_projects.models import CommunityProject
+from events.models import Event
+from creations.models import Creation
+
+from django.shortcuts import render, get_object_or_404
+
+def profile_view(request, user_id=None):
+    if user_id:
+        user = get_object_or_404(User, id=user_id)
+    else:
+        if not request.user.is_authenticated:
+            return redirect("login")
+        user = request.user
+
+    events = Event.objects.filter(author=user)
+    projects = CommunityProject.objects.filter(author=user)
+    creations = Creation.objects.filter(author=user)
+
+    return render(request, "accounts/profile.html", {
+        "profile_user": user,
+        "events": events,
+        "projects": projects,
+        "creations": creations,
+    })
+    
 

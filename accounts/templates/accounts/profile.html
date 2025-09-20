@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ profile_user.first_name }} {{ profile_user.last_name }}</h1>
+<p>Email: {{ profile_user.email }}</p>
+
+<h2>Events:</h2>
+<ul>
+	{% for event in events %}
+		<li>{{ event.title }} ({{ event.date_of_event }})</li>
+	{% empty %}
+		<li>No events found.</li>
+	{% endfor %}
+</ul>
+
+<h2>Community Projects:</h2>
+<ul>
+	{% for project in projects %}
+		<li>{{ project.title }} ({{ project.date_of_event }})</li>
+	{% empty %}
+		<li>No projects found.</li>
+	{% endfor %}
+</ul>
+
+<h2>Creations:</h2>
+<ul>
+	{% for creation in creations %}
+		<li>{{ creation.title }}</li>
+	{% empty %}
+		<li>No creations found.</li>
+	{% endfor %}
+</ul>
+{% endblock %}
