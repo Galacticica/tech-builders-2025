@@ -1,7 +1,22 @@
-
 {% extends "base.html" %}
 
 {% block content %}
-<p>This is the feed page.</p>
+<h1>Welcome to the Feed</h1>
+{% for post in posts %}
+    <div>
+        <h2>{{ post.title }} · {{ post.author }} ·{{ post.created_at }}</h2>
+        <p>{{ post.content }}</p>
+        {% if post.media.all %}
+            {% with first_media=post.media.all.0 %}
+                <div class="w-72 h-48 overflow-hidden flex items-center justify-center bg-gray-100 rounded">
+                    <img src="{{ first_media.url }}" alt="{{ first_media.title }}" class="max-w-full max-h-full object-contain" />
+                </div>
+            {% endwith %}
+        {% endif %}
+    <a href="{% url 'view_post' post.slug %}">Read more</a>
+    </div>
+{% empty %}
+    <p>No posts available.</p>
+{% endfor %}
 
 {% endblock %}

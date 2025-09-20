@@ -14,3 +14,7 @@ class Creation(Post):
     class Meta:
         verbose_name = "Creation"
         verbose_name_plural = "Creations"
+
+    def save(self, *args, **kwargs):
+        self.post_type = 'creation'
+        super().save(*args, **kwargs)

@@ -10,4 +10,5 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name='main_feed'),
+    path('<slug:slug>/', views.view_post, name='view_post'),
 ]

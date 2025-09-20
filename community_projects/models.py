@@ -14,3 +14,7 @@ class CommunityProject(Post):
     class Meta:
         verbose_name = "Community Project"
         verbose_name_plural = "Community Projects"
+
+    def save(self, *args, **kwargs):
+        self.post_type = 'community_project'
+        super().save(*args, **kwargs)
