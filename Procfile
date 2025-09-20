@@ -1,1 +1,2 @@
+release: python manage.py collectstatic --noinput
 web: gunicorn conf.wsgi:application --bind 0.0.0.0:8000 --workers 2
