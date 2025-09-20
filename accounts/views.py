@@ -1,4 +1,4 @@
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.views import LoginView
 from django.views.generic.edit import FormView
 from django.contrib.auth import login, logout
@@ -6,6 +6,9 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
 from django.views import View
 from .forms import LoginForm, SignupForm
+from community_projects.models import CommunityProject
+from events.models import Event
+from creations.models import Creation
 
 
 User = get_user_model()
@@ -23,10 +26,9 @@ class MySignupView(FormView):
     def form_valid(self, form):
         user = User.objects.create(
             email=form.cleaned_data["email"],
-            username=form.cleaned_data["email"],
             first_name=form.cleaned_data["first_name"],
             last_name=form.cleaned_data["last_name"],
-            password=make_password(form.cleaned_data["password"]), 
+            password=make_password(form.cleaned_data["password"]),
         )
         login(self.request, user)
         return super().form_valid(form)
@@ -38,12 +40,7 @@ class MyLogoutView(View):
     def get(self, request, *args, **kwargs):
         logout(request)  
         return redirect("/")  
-    
-from community_projects.models import CommunityProject
-from events.models import Event
-from creations.models import Creation
 
-from django.shortcuts import render, get_object_or_404
 
 def profile_view(request, user_id=None):
     if user_id:
