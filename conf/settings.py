@@ -18,7 +18,7 @@ load_dotenv(BASE_DIR / ".env")
 SECRET_KEY = os.getenv("SECRET_KEY", get_random_secret_key())
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['*.choreoapps.dev', 'localhost', '127.0.0.1', 'civic-app-2185071006.dp-development-civic-76803-1851682985', 'https://d80db47e-bf2e-4f7a-a09c-0c9c737309c3.e1-us-east-azure.choreoapps.dev/']
+ALLOWED_HOSTS = ['*.choreoapps.dev', 'localhost', '127.0.0.1', 'civic-app-2185071006.dp-development-civic-76803-1851682985', 'https://d80db47e-bf2e-4f7a-a09c-0c9c737309c3.e1-us-east-azure.choreoapps.dev/', 'https://27b1ccfa-2331-4ded-bfbd-075081cd5ade.e1-us-east-azure.choreoapps.dev/', 'frontend-274696130.dp-development-civic-76803-1851682985']
 
 # Application definition
 INSTALLED_APPS = [
