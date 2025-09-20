@@ -33,7 +33,8 @@ INSTALLED_APPS = [
     'community_projects',
     'creations',
     'events',
-    'posts'
+    'posts',
+    'feed',
 ]
 
 MIDDLEWARE = [
