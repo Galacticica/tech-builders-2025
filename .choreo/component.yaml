@@ -2,7 +2,7 @@ schemaVersion: "1.2"
 endpoints:
   - name: rest-api-be2
     displayName: REST API
-    context: /
+    context: /civic
     service:
       basePath: /
       port: 8000
