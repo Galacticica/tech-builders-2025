@@ -2,7 +2,7 @@
 File: urls.py
 Author: Reagan Zierke
 Date: 2025-09-19
-Description: description
+Description: URL configurations for the feed app
 """
 
 from django.urls import path, include

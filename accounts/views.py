@@ -1,3 +1,12 @@
+"""
+File: views.py
+Author: Reagan Zierke <reaganzierke@gmail.com>
+Date: 2025-09-20
+Description: Views for user authentication and profile management.
+"""
+
+
+
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.views import LoginView
 from django.views.generic.edit import FormView

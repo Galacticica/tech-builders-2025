@@ -3,30 +3,46 @@
 <h1>{{ profile_user.first_name }} {{ profile_user.last_name }}</h1>
 <p>Email: {{ profile_user.email }}</p>
 
+<!-- {% if event.linkedin_url %}
+  <a href="{{ event.linkedin_url }}" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" 
+         alt="LinkedIn" width="30" height="30">
+  </a>
+{% endif %}
+
+<p></p>
+
+
+
+<p></p> -->
+
 <h2>Events:</h2>
 <ul>
 	{% for event in events %}
-		<li>{{ event.title }} ({{ event.date_of_event }})</li>
+		<li><a href="{% url 'view_post' event.slug %}">{{ event.title }} ({{ event.date_of_event }})</a></li>
 	{% empty %}
 		<li>No events found.</li>
 	{% endfor %}
+	<a href="{% url 'create_event' %}">Create New Event</a>
 </ul>
 
 <h2>Community Projects:</h2>
 <ul>
 	{% for project in projects %}
-		<li>{{ project.title }} ({{ project.date_of_event }})</li>
+		<li><a href="{% url 'view_post' project.slug %}">{{ project.title }} ({{ project.date_of_event }})</a></li>
 	{% empty %}
 		<li>No projects found.</li>
 	{% endfor %}
+	<a href="{% url 'create_community_project' %}">Create New Community Project</a>
 </ul>
 
 <h2>Creations:</h2>
 <ul>
 	{% for creation in creations %}
-		<li>{{ creation.title }}</li>
+		<li><a href="{% url 'view_post' creation.slug %}">{{ creation.title }}</a></li>
 	{% empty %}
 		<li>No creations found.</li>
 	{% endfor %}
+	<a href="{% url 'create_creation' %}">Create New Creation</a>
 </ul>
 {% endblock %}

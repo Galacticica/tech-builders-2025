@@ -1,3 +1,12 @@
+"""
+File: forms.py
+Author: Reagan Zierke <reaganzierke@gmail.com>
+Date: 2025-09-20
+Description: Forms for user authentication, including login and signup.
+"""
+
+
+
 from django import forms
 from django.contrib.auth import authenticate as auth_authenticate
 
@@ -14,6 +23,13 @@ class LoginForm(forms.Form):
         required=True,
         widget=forms.PasswordInput(attrs={"placeholder": "Password", "class": "form-control"}),
         label="Password"
+    )
+
+    linked_in_url = forms.URLField(
+        max_length=200,
+        required=False,
+        widget=forms.URLInput(attrs={"placeholder": "LinkedIn Profile URL", "class": "form-control"}),
+        label="LinkedIn Profile URL"
     )
 
     def __init__(self, request, *args, **kwargs):

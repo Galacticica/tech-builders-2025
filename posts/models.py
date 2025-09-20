@@ -9,7 +9,7 @@ from django.db import models
 from accounts.models import User
 
 class Media(models.Model):
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=200, blank=True, null=True)
     url = models.URLField(max_length=500)
     post = models.ForeignKey('Post', on_delete=models.CASCADE, related_name='media', null=True, blank=True)
 

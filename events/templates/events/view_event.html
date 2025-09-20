@@ -1,33 +1,96 @@
 {% extends "base.html" %}
 
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'view_event.css' %}">
+{% endblock %}
+
 {% block content %}
 
-<h1>{{ post.title }}</h1>
-<p>{{ post.content }}</p>
-<p>Created by {{post.author}}</p>
-<p>Date: {{ post.date_of_event }}</p>
-<p>Location: {{ post.location }}</p>
-<p>Sign-Up Link: <a href="{{ post.signup_link }}" target="_blank">{{ post.signup_link }}</a></p>
+<div class="event-container">
+    <!-- Title -->
+    <h1 class="event-title">{{ post.title }}</h1>
 
-{% if post.media.all %}
-    <h2>Media</h2>
-    <ul>
-        {% for media in post.media.all %}
-            <li>
-                <div class="w-72 h-48 overflow-hidden flex items-center justify-center bg-gray-100 rounded">
-                    <img src="{{ media.url }}" alt="{{ media.title }}" class="max-w-full max-h-full object-contain" />
+    <!-- Media -->
+    {% if post.media.all %}
+        <div class="event-media">
+            {% for media in post.media.all %}
+                <div class="media-item">
+                    {% if media.url|lower|slice:'-4:' == '.jpg' or media.url|lower|slice:'-5:' == '.jpeg' or media.url|lower|slice:'-4:' == '.png' or media.url|lower|slice:'-4:' == '.gif' %}
+                        <img src="{{ media.url }}" class="media-img" />
+                    {% elif 'youtube.com' in media.url|lower or 'youtu.be' in media.url|lower %}
+                        <iframe src="https://www.youtube.com/embed/{{ media.url|cut:'https://youtu.be/'|cut:'https://www.youtube.com/watch?v=' }}" frameborder="0" allowfullscreen></iframe>
+                    {% elif media.url|lower|slice:'-4:' == '.mp4' or media.url|lower|slice:'-5:' == '.webm' or media.url|lower|slice:'-4:' == '.ogg' %}
+                        <video controls>
+                            <source src="{{ media.url }}">
+                            Your browser does not support the video tag.
+                        </video>
+                    {% else %}
+                        <a href="{{ media.url }}" target="_blank">View Media</a>
+                    {% endif %}
                 </div>
-            </li>
-        {% endfor %}
-    </ul>
-{% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
 
-# PayPal Donation Button
-<form action="https://www.paypal.com/donate" method="post" target="_top">
-  <input type="hidden" name="business" value="your-paypal-email@example.com">
-  <input type="hidden" name="item_name" value="Premium Membership">
-  <input type="hidden" name="currency_code" value="USD">
-  <input type="submit" value="Pay with PayPal">
-</form>
+    <!-- Event Info -->
+    <div class="event-meta">
+        <p><strong>📂 Category:</strong> {{ post.post_type }}</p>
+        <p><strong>📝 Description:</strong> {{ post.content }}</p>
+        <p><strong>👤 Created by:</strong> {{ post.author }}</p>
+        <p><strong>📅 Date:</strong> {{ date_of_event }}</p>
+        <p><strong>📍 Location:</strong> {{ location }}</p>
+        <p><strong>🔗 Sign-Up:</strong> <a href="{{ signup_link }}" target="_blank">{{ signup_link }}</a></p>
+    </div>
+
+    <!-- PayPal -->
+    <div class="event-paypal">
+        <form action="https://www.paypal.com/donate" method="post" target="_top">
+            <input type="hidden" name="business" value="your-paypal-email@example.com">
+            <input type="hidden" name="item_name" value="Premium Membership">
+            <input type="hidden" name="currency_code" value="USD">
+            <button type="submit" class="paypal-btn">💳 Pay with PayPal</button>
+        </form>
+    </div>
+
+    <hr>
+
+    <!-- Discussion -->
+    <h2>Discussion</h2>
+    <div id="messages">
+        {% for message in messages %}
+            <div class="message">
+                <strong>{{ message.author }}</strong> <em>{{ message.timestamp }}</em><br>
+                {{ message.body|safe }}
+                <div class="replies">
+                    {% for reply in message.get_replies %}
+                        <div class="reply">
+                            <strong>{{ reply.author }}</strong> <em>{{ reply.timestamp }}</em><br>
+                            {{ reply.body|safe }}
+                        </div>
+                    {% endfor %}
+                </div>
+                <form method="post" class="reply-form">
+                    {% csrf_token %}
+                    <input id="trix-body-{{ message.id }}" type="hidden" name="body" value="">
+                    <trix-editor input="trix-body-{{ message.id }}" class="form-control"></trix-editor>
+                    <input type="hidden" name="parent_id" value="{{ message.id }}">
+                    <button type="submit">Reply</button>
+                </form>
+            </div>
+        {% empty %}
+            <p>No messages yet. Be the first to comment!</p>
+        {% endfor %}
+    </div>
+
+    <h3>New Message</h3>
+    <form method="post" class="new-message-form">
+        {% csrf_token %}
+        <input id="trix-body-main" type="hidden" name="body" value="">
+        <trix-editor input="trix-body-main" class="form-control"></trix-editor>
+        <button type="submit">Post Message</button>
+    </form>
+</div>
 
 {% endblock %}

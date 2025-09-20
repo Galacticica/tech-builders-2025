@@ -1,22 +1,40 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'feed.css' %}">
+{% endblock %}
 
 {% block content %}
 <h1>Welcome to the Feed</h1>
+<div class="block-content">
 {% for post in posts %}
-    <div>
-        <h2>{{ post.title }} · {{ post.author }} ·{{ post.created_at }}</h2>
+    <div class="post-card">
+        <h2>{{ post.title }}</h2>
+        <div class="post-meta">{{ post.author }} · {{ post.created_at }}</div>
         <p>{{ post.content }}</p>
         {% if post.media.all %}
             {% with first_media=post.media.all.0 %}
-                <div class="w-72 h-48 overflow-hidden flex items-center justify-center bg-gray-100 rounded">
-                    <img src="{{ first_media.url }}" alt="{{ first_media.title }}" class="max-w-full max-h-full object-contain" />
+                <div class="post-media">
+                    {% if first_media.url|lower|slice:'-4:' == '.jpg' or first_media.url|lower|slice:'-5:' == '.jpeg' or first_media.url|lower|slice:'-4:' == '.png' or first_media.url|lower|slice:'-4:' == '.gif' %}
+                        <img src="{{ first_media.url }}" alt="{{ first_media.title }}" />
+                    {% elif 'youtube.com' in first_media.url|lower or 'youtu.be' in first_media.url|lower %}
+                        <iframe width="100%" height="250" src="https://www.youtube.com/embed/{{ first_media.url|cut:'https://youtu.be/'|cut:'https://www.youtube.com/watch?v=' }}" frameborder="0" allowfullscreen></iframe>
+                    {% elif first_media.url|lower|slice:'-4:' == '.mp4' or first_media.url|lower|slice:'-5:' == '.webm' or first_media.url|lower|slice:'-4:' == '.ogg' %}
+                        <video controls style="max-width:100%; max-height:250px;">
+                            <source src="{{ first_media.url }}">
+                            Your browser does not support the video tag.
+                        </video>
+                    {% else %}
+                        <a href="{{ first_media.url }}" target="_blank">View Media</a>
+                    {% endif %}
                 </div>
             {% endwith %}
         {% endif %}
-    <a href="{% url 'view_post' post.slug %}">Read more</a>
+        <a href="{% url 'view_post' post.slug %}">Learn More</a>
     </div>
 {% empty %}
     <p>No posts available.</p>
 {% endfor %}
-
+</div>
 {% endblock %}

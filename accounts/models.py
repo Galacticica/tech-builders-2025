@@ -1,3 +1,12 @@
+"""
+File: models.py
+Author: Reagan Zierke <reaganzierke@gmail.com>
+Date: 2025-09-20
+Description: Custom user model with email as the unique identifier.
+"""
+
+
+
 from django.db import models
 from django.contrib.auth.models import AbstractUser, UserManager
 
@@ -25,6 +34,9 @@ class CustomUserManager(UserManager):
 class User(AbstractUser):
     username = None  # Remove username field
     email = models.EmailField(unique=True)
+    linked_in_url = models.URLField(blank=True, null=True)
+    
+
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["first_name", "last_name"]
 

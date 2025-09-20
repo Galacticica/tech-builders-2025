@@ -9,8 +9,9 @@ from django.db import models
 from posts.models import Post, Media
 
 class Event(Post):
-    date_of_event = models.DateField(null=True, blank=True)
+    date_of_event = models.DateTimeField(null=True, blank=True)
     location = models.CharField(max_length=200, null=True, blank=True)
+    sign_up_link = models.URLField(max_length=200, null=True, blank=True)
 
     class Meta:
         verbose_name = "Event"

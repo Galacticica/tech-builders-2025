@@ -1,3 +1,12 @@
+"""
+File: settings.py
+Author: Reagan Zierke <reaganzierke@gmail.com>
+Date: 2025-09-20
+Description: Django settings for the project.
+"""
+
+
+
 from pathlib import Path
 import os
 from dotenv import load_dotenv
@@ -35,6 +44,7 @@ INSTALLED_APPS = [
     'events',
     'posts',
     'feed',
+    'forum',
 ]
 
 MIDDLEWARE = [

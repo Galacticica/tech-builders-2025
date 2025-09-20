@@ -1,0 +1,158 @@
+/* Global body styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background: #f9fafb;
+  color: #1f2937;
+  line-height: 1.6;
+}
+
+/* Event container */
+.event-container {
+  max-width: 850px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border: 1px solid cadetblue;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Event title */
+.event-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: #192C53;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Event media grid */
+.event-media {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.media-item {
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #f3f4f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.media-item img,
+.media-item video,
+.media-item iframe {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* Event meta info */
+.event-meta {
+  margin: 1.5rem 0;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.event-meta p {
+  margin-bottom: 0.75rem;
+}
+
+.event-meta strong {
+  color: #192C53;
+}
+
+/* PayPal section */
+.event-paypal {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.paypal-btn {
+  background-color: #ffc439;
+  color: #111;
+  font-weight: 600;
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.paypal-btn:hover {
+  background-color: #ffb347;
+}
+
+/* Discussion section */
+#messages {
+  margin-top: 2rem;
+}
+
+.message, .reply {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.reply {
+  margin-left: 1.25rem;
+  background: #f3f4f6;
+}
+
+.message strong,
+.reply strong {
+  color: #192C53;
+}
+
+/* Forms */
+.reply-form,
+.new-message-form {
+  margin-top: 1rem;
+}
+
+.reply-form button,
+.new-message-form button {
+  background-color: #b3b3b3;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.reply-form button:hover,
+.new-message-form button:hover {
+  background-color: #6175ab;
+}
+
+/* Trix editor */
+trix-editor.form-control {
+  min-height: 80px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0.5rem;
+  background: #fff;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Horizontal rule */
+hr {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 2rem 0;
+}

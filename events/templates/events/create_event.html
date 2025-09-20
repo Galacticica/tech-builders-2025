@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'view_creation.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="event-form-container">
+    <h1 class="event-form-title">Create a New Event</h1>
+
+    <form method="post" class="event-form">
+        {% csrf_token %}
+        <div class="form-fields">
+            {{ form.as_p }}
+        </div>
+        <button type="submit" class="submit-btn">Upload New Event</button>
+    </form>
+</div>
+{% endblock %}

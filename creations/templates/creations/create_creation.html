@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>Upload a New Creation</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+
+        <button type="submit">Upload New Creation</button>
+    </form>
+
+{% endblock %}
