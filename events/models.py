@@ -1,3 +1,16 @@
-from django.db import models
+"""
+File: models.py
+Author: Reagan Zierke, Heidi Blank, Lawson Fairchild
+Date: 2025-09-19
+Description: Model for events
+"""
 
-# Create your models here.
+from django.db import models
+from posts.models import Post
+
+class Event(Post):
+    date_of_event = models.DateField(null=True, blank=True)
+
+    class Meta:
+        verbose_name = "Event"
+        verbose_name_plural = "Events"

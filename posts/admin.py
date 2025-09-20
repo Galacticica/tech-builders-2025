@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import Event
+from .models import Video, Post
 
-admin.site.register(Event)
+admin.site.register(Video, Post)
 

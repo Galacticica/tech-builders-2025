@@ -30,6 +30,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "django_browser_reload",
     'accounts',
+    'community_projects',
+    'creations',
+    'events',
+    'posts'
 ]
 
 MIDDLEWARE = [
