@@ -113,5 +113,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = "accounts.User"
 LOGIN_URL = "/account/login/"
 
+
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
+
+# Security settings for production
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.choreoapps.dev",
+    "https://d80db47e-bf2e-4f7a-a09c-0c9c737309c3.e1-us-east-azure.choreoapps.dev",
+    # Add any other domains you use
+]

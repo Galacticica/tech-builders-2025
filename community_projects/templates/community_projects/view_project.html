@@ -1,5 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
+<h1>{{ post.title }}</h1>
+<p>{{ post.content }}</p>
+<p>Created by {{post.author}}</p>
+<p>Date: {{ post.date_of_event }}</p>
+<p>Location: {{ post.location }}</p>
+<p>Sign-Up Link: <a href="{{ post.signup_link }}" target="_blank">{{ post.signup_link }}</a></p>
 
+{% if post.media.all %}
+    <h2>Media</h2>
+    <ul>
+        {% for media in post.media.all %}
+            <li>
+                <div class="w-72 h-48 overflow-hidden flex items-center justify-center bg-gray-100 rounded">
+                    <img src="{{ media.url }}" alt="{{ media.title }}" class="max-w-full max-h-full object-contain" />
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
 {% endblock %}

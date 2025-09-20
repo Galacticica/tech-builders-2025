@@ -10,6 +10,7 @@ from posts.models import Post
 
 class CommunityProject(Post):
     date_of_event = models.DateField(null=True, blank=True)
+    location = models.CharField(max_length=200, null=True, blank=True)
 
     class Meta:
         verbose_name = "Community Project"
