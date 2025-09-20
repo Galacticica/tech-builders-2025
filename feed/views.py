@@ -25,11 +25,24 @@ def home(request):
 
 def view_post(request, slug):
     post = get_object_or_404(Post, slug=slug)
+    # Get the actual subclass instance for correct template context
     if post.post_type == 'event':
+        try:
+            post = post.event
+        except Exception:
+            post = Event.objects.get(pk=post.pk)
         template = "events/view_event.html"
     elif post.post_type == 'community_project':
+        try:
+            post = post.communityproject
+        except Exception:
+            post = CommunityProject.objects.get(pk=post.pk)
         template = "community_projects/view_project.html"
     elif post.post_type == 'creation':
+        try:
+            post = post.creation
+        except Exception:
+            post = Creation.objects.get(pk=post.pk)
         template = "creations/view_creation.html"
     else:
         template = "feed/post_detail.html"
