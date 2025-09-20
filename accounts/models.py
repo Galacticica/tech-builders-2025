@@ -34,8 +34,8 @@ class CustomUserManager(UserManager):
 class User(AbstractUser):
     username = None  # Remove username field
     email = models.EmailField(unique=True)
-    linked_in_url = models.URLField(blank=True, null=True)
-    
+    # linked_in_url = models.URLField(blank=True, null=True)
+
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["first_name", "last_name"]

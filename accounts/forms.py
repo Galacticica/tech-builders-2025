@@ -25,12 +25,12 @@ class LoginForm(forms.Form):
         label="Password"
     )
 
-    linked_in_url = forms.URLField(
-        max_length=200,
-        required=False,
-        widget=forms.URLInput(attrs={"placeholder": "LinkedIn Profile URL", "class": "form-control"}),
-        label="LinkedIn Profile URL"
-    )
+    # linked_in_url = forms.URLField(
+    #     max_length=200,
+    #     required=False,
+    #     widget=forms.URLInput(attrs={"placeholder": "LinkedIn Profile URL", "class": "form-control"}),
+    #     label="LinkedIn Profile URL"
+    # )
 
     def __init__(self, request, *args, **kwargs):
         super().__init__(*args, **kwargs)
