@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "django_browser_reload",
     'accounts',
     'community_projects',
     'creations',
@@ -46,6 +45,8 @@ INSTALLED_APPS = [
     'feed',
     'forum',
 ]
+if DEBUG:
+    INSTALLED_APPS.insert(7, "django_browser_reload")
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -55,9 +56,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "django_browser_reload.middleware.BrowserReloadMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
+if DEBUG:
+    MIDDLEWARE.insert(-1, "django_browser_reload.middleware.BrowserReloadMiddleware")
 
 ROOT_URLCONF = 'conf.urls'
 

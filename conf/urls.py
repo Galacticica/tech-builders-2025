@@ -9,9 +9,14 @@ Description: Main URL configurations for the project.
 from django.contrib import admin
 from django.urls import path, include
 
+from django.conf import settings
+
 urlpatterns = [
     path('account/', include('accounts.urls')),
-    path('__reload__/', include('django_browser_reload.urls')),
+]
+if settings.DEBUG:
+    urlpatterns += [path('__reload__/', include('django_browser_reload.urls'))]
+urlpatterns += [
     path('admin/', admin.site.urls),
     path('', include('feed.urls')),
     path('events/', include('events.urls')),
