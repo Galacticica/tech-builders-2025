@@ -39,9 +39,9 @@
         <p><strong>📂 Category:</strong> {{ post.post_type }}</p>
         <p><strong>📝 Description:</strong> {{ post.content }}</p>
         <p><strong>👤 Created by:</strong> {{ post.author }}</p>
-        <p><strong>📅 Date:</strong> {{ date_of_event }}</p>
-        <p><strong>📍 Location:</strong> {{ location }}</p>
-        <p><strong>🔗 Sign-Up:</strong> <a href="{{ signup_link }}" target="_blank">{{ signup_link }}</a></p>
+        <p><strong>📅 Date:</strong> {{ post.date_of_event }}</p>
+        <p><strong>📍 Location:</strong> {{ post.location }}</p>
+        <p><strong>🔗 Sign-Up:</strong> <a href="{{ signup_link }}" target="_blank">{{ post.signup_link }}</a></p>
     </div>
 
     <!-- PayPal -->

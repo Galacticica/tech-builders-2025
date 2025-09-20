@@ -1,25 +1,32 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'create_project.css' %}">
+{% endblock %}
+
 {% block content %}
+<div class="project-container">
+    <div class="project-card">
+        <h1 class="project-title">Create a New Community Project</h1>
 
-    <h1>Create a New Community Project</h1>
-
-
-    <form method="post">
-        {% csrf_token %}
-        {% for field in form %}
+        <form method="post" class="project-form">
+            {% csrf_token %}
+            {% for field in form %}
             <div class="form-group">
                 <label for="{{ field.id_for_label }}">{{ field.label }}</label>
                 {{ field }}
                 {% if field.help_text %}
-                    <small class="form-text text-muted">{{ field.help_text }}</small>
+                <small class="form-text">{{ field.help_text }}</small>
                 {% endif %}
                 {% for error in field.errors %}
-                    <div class="form-error">{{ error }}</div>
+                <div class="form-error">{{ error }}</div>
                 {% endfor %}
             </div>
-        {% endfor %}
-        <button type="submit">Upload Community Project</button>
-    </form>
+            {% endfor %}
 
-
+            <button type="submit" class="project-btn">Upload Community Project</button>
+        </form>
+    </div>
+</div>
 {% endblock %}

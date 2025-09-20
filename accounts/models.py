@@ -32,10 +32,13 @@ class CustomUserManager(UserManager):
         return self.create_user(email, password, **extra_fields)
 
 class User(AbstractUser):
-    username = None  # Remove username field
-    email = models.EmailField(unique=True)
-    # linked_in_url = models.URLField(blank=True, null=True)
 
+    username = None  
+    email = models.EmailField(unique=True)
+    linked_in_url = models.URLField(blank=True, null=True)
+    instagram_url = models.URLField(blank=True, null=True)
+    skills = models.TextField(blank=True, null=True)
+    career = models.TextField(blank=True, null=True)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["first_name", "last_name"]

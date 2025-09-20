@@ -23,14 +23,7 @@ class LoginForm(forms.Form):
         required=True,
         widget=forms.PasswordInput(attrs={"placeholder": "Password", "class": "form-control"}),
         label="Password"
-    )
-
-    # linked_in_url = forms.URLField(
-    #     max_length=200,
-    #     required=False,
-    #     widget=forms.URLInput(attrs={"placeholder": "LinkedIn Profile URL", "class": "form-control"}),
-    #     label="LinkedIn Profile URL"
-    # )
+    )              
 
     def __init__(self, request, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -81,6 +74,31 @@ class SignupForm(forms.Form):
         widget=forms.TextInput(attrs={"placeholder": "Last Name", "class": "form-control"}),
         label="Last Name"
     )
+    linked_in_url = forms.URLField(
+        max_length=200,
+        required=False,
+        widget=forms.URLInput(attrs={"placeholder": "LinkedIn Profile URL", "class": "form-control"}),
+        label="LinkedIn Profile URL"
+    )
+    instagram_url = forms.URLField(
+        max_length=200,
+        required=False,
+        widget=forms.URLInput(attrs={"placeholder": "Instagram Profile URL", "class": "form-control"}),
+        label="Instagram Profile URL"
+    )
+    skills = forms.CharField(
+        max_length=500,
+        required=False,
+        widget=forms.Textarea(attrs={"placeholder": "Skills...", "class": "form-control", "rows": 3}),
+        label="Skills"
+    )
+    career = forms.CharField(
+        max_length=200,
+        required=False,
+        widget=forms.Textarea(attrs={"placeholder": "Career...", "class": "form-control", "rows": 3}),
+        label="Career"
+    )
+
 
     def clean(self):
         cleaned_data = super().clean()

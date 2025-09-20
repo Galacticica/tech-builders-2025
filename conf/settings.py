@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'posts',
     'feed',
     'forum',
+    'events_calendar',
 ]
 if DEBUG:
     INSTALLED_APPS.insert(7, "django_browser_reload")

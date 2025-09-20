@@ -1,14 +1,22 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'create_creation.css' %}">
+{% endblock %}
+
 {% block content %}
+<div class="creation-container">
+    <div class="creation-card">
+        <h1 class="creation-title">Upload a New Creation</h1>
 
-    <h1>Upload a New Creation</h1>
-
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-
-
-        <button type="submit">Upload New Creation</button>
-    </form>
-
+        <form method="post" class="creation-form">
+            {% csrf_token %}
+            <div class="form-fields">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="creation-btn">Upload New Creation</button>
+        </form>
+    </div>
+</div>
 {% endblock %}

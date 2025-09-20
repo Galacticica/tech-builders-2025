@@ -1,101 +1,139 @@
-/* feed.css */
-
-/* Global styles */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Inter', sans-serif;
-  background: #f9fafb;
-  color: #1f2937;
-  line-height: 1.6;
+/* Container */
+.project-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fdf6f0, #f0fdfa);
+  padding: 2rem 1rem;
 }
 
-/* Page title */
-h1 {
+/* Card */
+.project-card {
+  background: #ffffff;
+  padding: 3rem 2.5rem;
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.10);
+  width: 100%;
+  max-width: 700px;
+}
+
+/* Title */
+.project-title {
   font-size: 2rem;
   font-weight: 700;
-  margin: 1.5rem 0;
+  color: #1e293b;
   text-align: center;
-  color: #192C53;
-}
-
-/* Feed container */
-.block-content {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 1rem 3rem;
-}
-
-/* Each post card */
-.post-card {
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
   margin-bottom: 2rem;
-  padding: 1.5rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  line-height: 1.05;
 }
 
-.post-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+.project-title::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 3px;
+  background: #7f9a65;
+  margin: 0.75rem auto 0;
+  border-radius: 2px;
 }
 
-/* Post header */
-.post-card h2 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin: 0 0 0.5rem;
-  color: #111827;
-}
-
-/* Meta info (author, date) */
-.post-meta {
-  font-size: 0.875rem;
-  color: #6b7280;
-  margin-bottom: 0.75rem;
-}
-
-/* Post content */
-.post-card p {
-  font-size: 1rem;
-  color: #374151;
-  margin-bottom: 1rem;
-}
-
-/* Media container */
-.post-media {
-  width: 100%;
-  max-height: 300px;
-  overflow: hidden;
-  border-radius: 8px;
-  margin-bottom: 1rem;
+/* Form wrapper */
+.project-form {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #f3f4f6;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-.post-media img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+/* Inputs, selects, textareas */
+.project-form input,
+.project-form select,
+.project-form textarea {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  color: #0f172a;
+  background: #ffffff;
+  transition: border 0.25s ease, box-shadow 0.25s ease, transform 0.12s ease;
+  box-sizing: border-box;
 }
 
-/* Links */
-.post-card a {
-  display: inline-block;
-  text-decoration: none;
-  font-weight: 500;
-  color: #192C53;
-  padding: 0.5rem 1rem;
-  border: 1px solid #192C53;
-  border-radius: 6px;
-  transition: background 0.3s ease, color 0.3s ease;
+/* Focus */
+.project-form input:focus,
+.project-form select:focus,
+.project-form textarea:focus {
+  outline: none;
+  border-color: #7f9a65;
+  box-shadow: 0 6px 20px rgba(127,154,101,0.15);
 }
 
-.post-card a:hover {
-  background: #192C53;
-  color: #fff;
+/* Labels */
+.project-form label {
+  font-weight: 600;
+  color: #334155;
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.98rem;
+}
+
+/* Paragraphs (form.as_p style) */
+.project-form p {
+  margin-bottom: 0.5rem;
+  color: #384054;
+}
+
+/* Button */
+.project-btn {
+  margin-top: 1.5rem;
+  padding: 0.75rem 2rem;
+  background-color: cadetblue;
+  color: #ffffff;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background 0.25s ease, transform 0.16s ease, box-shadow 0.2s ease;
+  box-shadow: 0 6px 18px rgba(0,111,111,0.12);
+  align-self: center;
+}
+
+.project-btn:hover {
+  background-color: #005a5a;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(0,90,90,0.16);
+}
+
+.project-btn:active {
+  transform: translateY(-1px);
+}
+
+/* Disabled */
+.project-btn[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Responsive */
+@media (max-width: 520px) {
+  .project-card {
+    padding: 2rem;
+    border-radius: 12px;
+  }
+
+  .project-title {
+    font-size: 1.6rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .project-btn {
+    width: 100%;
+    padding: 0.85rem;
+  }
 }

@@ -17,6 +17,9 @@ class Event(Post):
         verbose_name = "Event"
         verbose_name_plural = "Events"
 
+    def __str__(self):
+        return self.title or "(No Title)"
+
     def save(self, *args, **kwargs):
         self.post_type = 'event'
         super().save(*args, **kwargs)

@@ -38,6 +38,10 @@ class MySignupView(FormView):
             first_name=form.cleaned_data["first_name"],
             last_name=form.cleaned_data["last_name"],
             password=make_password(form.cleaned_data["password"]),
+            linked_in_url=form.cleaned_data.get("linked_in_url", ""),
+            instagram_url=form.cleaned_data.get("instagram_url", ""),
+            skills=form.cleaned_data.get("skills", ""),
+            career=form.cleaned_data.get("career", ""),
         )
         login(self.request, user)
         return super().form_valid(form)

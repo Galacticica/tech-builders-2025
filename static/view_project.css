@@ -1,102 +1,103 @@
-/* Global styles */
+/* Global body styles */
 body {
     margin: 0;
     padding: 0;
     font-family: 'Inter', sans-serif;
     background: #f9fafb;
-    color: #1f2937;
+    color: #0f172a;
     line-height: 1.6;
 }
 
-/* Post container */
-.post-container {
+/* Event container */
+.event-container {
     max-width: 900px;
     margin: 2rem auto;
     padding: 2rem;
-    background: #fff;
-    border: 1px solid #c0d6d6;
+    background: #ffffff;
     border-radius: 12px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
 }
 
-/* Post Title */
-.post-container h1 {
+/* Event title */
+.event-title {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #192C53;
     text-align: center;
     margin-bottom: 1rem;
+    color: #0051c8;
+    background: linear-gradient(90deg, #0087c5, #0051c8);
+    padding: 1rem;
+    border-radius: 12px;
+    position: relative;
 }
 
-/* Meta info */
-.post-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem 1.5rem;
-    font-size: 0.95rem;
-    color: #334155;
-    margin: 0.5rem 0;
+.event-title::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #ffa700;
+    margin: 0.75rem auto 0;
+    border-radius: 2px;
 }
 
-.post-meta a {
-    color: #1e40af;
-    text-decoration: underline;
+/* Event media grid */
+.event-media {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
 }
 
-.post-meta a:hover {
-    color: #1e3a8a;
-}
-
-/* Paragraphs */
-.post-container p {
-    font-size: 1rem;
-    color: #374151;
-    margin-bottom: 1rem;
-}
-
-/* Media section */
-.w-72 {
-    width: 18rem;
-}
-.h-48 {
+.media-item {
+    width: 100%;
     height: 12rem;
-}
-
-.w-72, .h-48 {
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background: #f3f4f6;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-}
-
-.w-72 img,
-.w-72 video,
-.w-72 iframe {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    border-radius: 6px;
+    background: #00ac26;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.w-72 img:hover,
-.w-72 video:hover,
-.w-72 iframe:hover {
-    transform: scale(1.02);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+.media-item img,
+.media-item video,
+.media-item iframe {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
 }
 
-/* PayPal Button */
-.paypal-form {
+.media-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+/* Event meta info */
+.event-meta {
+    margin: 1rem 0;
+    font-size: 1rem;
+}
+
+.event-meta p {
+    margin-bottom: 0.75rem;
+}
+
+.event-meta strong {
+    color: #0051c8;
+}
+
+/* PayPal section */
+.event-paypal {
     margin: 1.5rem 0;
     text-align: center;
 }
 
-.paypal-form input[type="submit"] {
-    background-color: #192C53;
+.paypal-btn {
+    background-color: #0051c8;
     color: #fff;
     font-weight: 600;
     padding: 0.5rem 1.25rem;
@@ -106,64 +107,63 @@ body {
     transition: background 0.3s ease;
 }
 
-.paypal-form input[type="submit"]:hover {
-    background-color: #111f45;
+.paypal-btn:hover {
+    background-color: #0087c5;
 }
 
-/* Discussion messages */
+/* Discussion section */
 #messages {
     margin-top: 2rem;
 }
 
 .message, .reply {
     background: #f9fafb;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
+    border: 1px solid #0087c5;
+    border-radius: 12px;
     padding: 1rem;
     margin-bottom: 1rem;
 }
 
 .reply {
-    margin-left: 1rem;
-    background: #f3f4f6;
+    margin-left: 1.5rem;
+    background: #00ac26;
 }
 
 .message strong,
 .reply strong {
-    color: #192C53;
-}
-
-.replies {
-    margin-top: 0.5rem;
+    color: #0051c8;
 }
 
 /* Forms */
-.reply-form, .new-message-form {
+.reply-form,
+.new-message-form {
     margin-top: 1rem;
 }
 
-.reply-form button, .new-message-form button {
-    background-color: #192C53;
+.reply-form button,
+.new-message-form button {
+    background-color: #0051c8;
     color: #fff;
     font-weight: 600;
-    padding: 0.4rem 1rem;
+    padding: 0.5rem 1rem;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     transition: background 0.3s ease;
 }
 
-.reply-form button:hover, .new-message-form button:hover {
-    background-color: #111f45;
+.reply-form button:hover,
+.new-message-form button:hover {
+    background-color: #0087c5;
 }
 
-/* Trix Editor */
+/* Trix editor */
 .editor-wrapper {
     margin-bottom: 1rem;
-    border: 1px solid #d1d5db;
+    border: 1px solid #0087c5;
     border-radius: 6px;
     padding: 0.25rem;
-    background: #fff;
+    background: #ffffff;
 }
 
 trix-editor.form-control {
@@ -171,28 +171,28 @@ trix-editor.form-control {
     border: none;
     border-radius: 4px;
     padding: 0.5rem;
-    background: rgb(219, 219, 219);
+    background: #f0f9ff;
     width: 100%;
     box-sizing: border-box;
 }
 
 trix-toolbar .trix-button {
-    background: #fff !important;
+    background: #0051c8 !important;
     border-radius: 4px;
     border: none;
     transition: background 0.2s;
+    color: #fff !important;
 }
 
 trix-toolbar .trix-button:hover,
 trix-toolbar .trix-button:active,
 trix-toolbar .trix-button.trix-active {
-    background: rgb(122, 137, 180) !important;
-    color: #fff !important;
+    background: #0087c5 !important;
 }
 
 /* Horizontal rule */
 hr {
     border: none;
-    border-top: 1px solid #e5e7eb;
+    border-top: 1px solid #0087c5;
     margin: 2rem 0;
 }

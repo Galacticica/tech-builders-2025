@@ -22,4 +22,5 @@ urlpatterns += [
     path('events/', include('events.urls')),
     path('creations/', include('creations.urls')),
     path('community_projects/', include('community_projects.urls')),
+    path('events_calendar/', include('events_calendar.urls')),
 ]

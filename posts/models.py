@@ -14,7 +14,7 @@ class Media(models.Model):
     post = models.ForeignKey('Post', on_delete=models.CASCADE, related_name='media', null=True, blank=True)
 
     def __str__(self):
-        return self.title
+        return self.title or self.url or "(No Title)"
 
     
 class Post(models.Model):

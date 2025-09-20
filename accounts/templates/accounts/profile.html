@@ -1,48 +1,76 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'profile.css' %}">
+{% endblock %}
+
 {% block content %}
-<h1>{{ profile_user.first_name }} {{ profile_user.last_name }}</h1>
-<p>Email: {{ profile_user.email }}</p>
+<div class="profile-container">
+    <div class="profile-header">
+        <!-- <div class="profile-avatar">
+            <img src="{% static 'default_avatar.png' %}" alt="{{ profile_user.first_name }}" />
+        </div> -->
+        <h1 class="profile-name">{{ profile_user.first_name }} {{ profile_user.last_name }}</h1>
+        <p class="profile-email">{{ profile_user.email }}</p>
 
-<!-- {% if event.linkedin_url %}
-  <a href="{{ event.linkedin_url }}" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" 
-         alt="LinkedIn" width="30" height="30">
-  </a>
-{% endif %}
+        <div class="social-links">
+            {% if profile_user.linked_in_url %}
+            <a href="{{ profile_user.linked_in_url }}" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+            </a>
+            {% endif %}
 
-<p></p>
+            {% if profile_user.instagram_url %}
+            <a href="{{ profile_user.instagram_url }}" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+            </a>
+            {% endif %}
+        </div>
+		<div class="profile-bio">
+			{% if profile_user.career %}
+			<h3>Career: {{ profile_user.career }}</h3>
+			{% endif %}
+			{% if profile_user.skills %}
+			<h3>Skills: {{ profile_user.skills }}</h3>
+			{% endif %}
+		</div>
+    </div>
 
+    <div class="profile-section">
+        <h2>Events</h2>
+        <ul class="profile-list">
+            {% for event in events %}
+            <li><a href="{% url 'view_post' event.slug %}">{{ event.title }} ({{ event.date_of_event }})</a></li>
+            {% empty %}
+            <li>No events found.</li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'create_event' %}" class="create-link">+ Create New Event</a>
+    </div>
 
+    <div class="profile-section">
+        <h2>Community Projects</h2>
+        <ul class="profile-list">
+            {% for project in projects %}
+            <li><a href="{% url 'view_post' project.slug %}">{{ project.title }} ({{ project.date_of_event }})</a></li>
+            {% empty %}
+            <li>No projects found.</li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'create_community_project' %}" class="create-link">+ Create New Community Project</a>
+    </div>
 
-<p></p> -->
-
-<h2>Events:</h2>
-<ul>
-	{% for event in events %}
-		<li><a href="{% url 'view_post' event.slug %}">{{ event.title }} ({{ event.date_of_event }})</a></li>
-	{% empty %}
-		<li>No events found.</li>
-	{% endfor %}
-	<a href="{% url 'create_event' %}">Create New Event</a>
-</ul>
-
-<h2>Community Projects:</h2>
-<ul>
-	{% for project in projects %}
-		<li><a href="{% url 'view_post' project.slug %}">{{ project.title }} ({{ project.date_of_event }})</a></li>
-	{% empty %}
-		<li>No projects found.</li>
-	{% endfor %}
-	<a href="{% url 'create_community_project' %}">Create New Community Project</a>
-</ul>
-
-<h2>Creations:</h2>
-<ul>
-	{% for creation in creations %}
-		<li><a href="{% url 'view_post' creation.slug %}">{{ creation.title }}</a></li>
-	{% empty %}
-		<li>No creations found.</li>
-	{% endfor %}
-	<a href="{% url 'create_creation' %}">Create New Creation</a>
-</ul>
+    <div class="profile-section">
+        <h2>Creations</h2>
+        <ul class="profile-list">
+            {% for creation in creations %}
+            <li><a href="{% url 'view_post' creation.slug %}">{{ creation.title }}</a></li>
+            {% empty %}
+            <li>No creations found.</li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'create_creation' %}" class="create-link">+ Create New Creation</a>
+    </div>
+</div>
 {% endblock %}
