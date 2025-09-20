@@ -18,7 +18,7 @@ load_dotenv(BASE_DIR / ".env")
 SECRET_KEY = os.environ.get("SECRET_KEY", get_random_secret_key())
 DEBUG = os.environ.get("DEBUG", "0") == "1"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*.choreoapps.dev', 'localhost']
 
 # Application definition
 INSTALLED_APPS = [
