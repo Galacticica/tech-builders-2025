@@ -8,51 +8,29 @@ body {
     line-height: 1.6;
 }
 
-/* Post container */
-.post-container {
+/* Event container */
+.event-container {
     max-width: 850px;
     margin: 2rem auto;
-    padding: 1.5rem 2rem;
+    padding: 2rem;
     background: #ffffff;
     border: 1px solid cadetblue;
     border-radius: 12px;
     box-shadow: 0 6px 16px rgba(0,0,0,0.05);
 }
 
-/* Post description */
-.post-description {
-    font-size: 1.05rem;
-    color: #374151;
-    line-height: 1.7;
-    margin: 1.5rem 0;
-    padding: 1rem 1.25rem;
-    background: #f9fafb;
-    border-left: 4px solid cadetblue;
-    border-radius: 6px;
-}
-
-/* Header Container */
-.post-header {
-    background: linear-gradient(90deg, #fdf6f0, #f0fdfa);
-    border-radius: 12px;
-    padding: 2rem 1.5rem;
-    margin-bottom: 2rem;
-    text-align: center;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.06);
-}
-
-/* Post Title */
-.post-header .post-title {
-    font-size: 2.5rem;
+/* Event title */
+.event-title {
+    font-size: 2.8rem;
     font-weight: 800;
-    color: #0f172a;
     margin-bottom: 1rem;
+    color: #0f172a;
+    text-align: center;
     line-height: 1.2;
-    letter-spacing: -0.02em;
     position: relative;
 }
 
-.post-header .post-title::after {
+.event-title::after {
     content: "";
     display: block;
     width: 60px;
@@ -62,77 +40,69 @@ body {
     border-radius: 2px;
 }
 
-/* Meta Info Container */
-.post-header .post-meta {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem 2rem;
-    font-size: 0.95rem;
-    color: #334155;
+/* Event media grid */
+.event-media {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 2rem;
 }
 
-/* Individual Meta Info Items */
-.post-header .post-meta span {
-    background: #f1f5f9;
-    padding: 0.4rem 0.8rem;
-    border-radius: 6px;
-    font-weight: 500;
-    transition: background 0.3s ease;
-}
-
-/* Links inside meta */
-.post-header .post-meta a {
-    color: #1e40af;
-    font-weight: 600;
-    text-decoration: underline;
-}
-
-.post-header .post-meta a:hover {
-    color: #0f4f5f;
-}
-
-/* Paragraphs */
-.post-container p {
-    font-size: 1rem;
-    color: #374151;
-    margin-bottom: 1rem;
-}
-
-/* Links */
-.post-container a {
-    color: cadetblue;
-    font-weight: 500;
-    text-decoration: none;
-}
-
-.post-container a:hover {
-    text-decoration: underline;
-}
-
-/* Media section */
-ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-ul li {
-    margin-bottom: 1rem;
-}
-
-ul li img {
-    border-radius: 8px;
-    border: 1px solid #e5e7eb;
+.media-item {
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
+    border-radius: 10px;
     background: #f3f4f6;
-    max-width: 100%;
-    height: auto;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-ul li img:hover {
-    transform: scale(1.02);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+.media-item img,
+.media-item video,
+.media-item iframe {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+/* Event meta info */
+.event-meta {
+    margin: 1.5rem 0;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.event-meta p {
+    margin-bottom: 0.75rem;
+}
+
+.event-meta strong {
+    color: #0f172a;
+}
+
+/* PayPal section */
+.event-paypal {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.paypal-btn {
+    background-color: #ffc439;
+    color: #111;
+    font-weight: 600;
+    padding: 0.6rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.15s ease;
+}
+
+.paypal-btn:hover {
+    background-color: #ffb347;
+    transform: translateY(-2px);
 }
 
 /* Discussion section */
@@ -149,7 +119,7 @@ ul li img:hover {
 }
 
 .reply {
-    margin-left: 1rem;
+    margin-left: 1.25rem;
     background: #f3f4f6;
 }
 
@@ -159,64 +129,40 @@ ul li img:hover {
 }
 
 /* Forms */
-.reply-form, .new-message-form {
+.reply-form,
+.new-message-form {
     margin-top: 1rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
 }
 
-.reply-form button, .new-message-form button {
+.reply-form button,
+.new-message-form button {
     background-color: cadetblue;
     color: #fff;
     font-weight: 600;
-    padding: 0.5rem 1.25rem;
+    padding: 0.4rem 1rem;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: background 0.25s ease, transform 0.15s ease, box-shadow 0.2s ease;
-    align-self: flex-start;
+    transition: background 0.25s ease, transform 0.16s ease, box-shadow 0.2s ease;
     box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
 
-.reply-form button:hover, .new-message-form button:hover {
+.reply-form button:hover,
+.new-message-form button:hover {
     background-color: #0f4f5f;
     transform: translateY(-2px);
     box-shadow: 0 12px 26px rgba(0,0,0,0.1);
 }
 
-/* Trix editor wrapper */
-.editor-wrapper {
-    margin-bottom: 1rem;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    padding: 0.25rem;
-    background: #ffffff;
-}
-
-/* Trix editor styling */
+/* Trix editor */
 trix-editor.form-control {
     min-height: 80px;
-    border: none;
-    border-radius: 4px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
     padding: 0.5rem;
-    background: #f3f4f6;
+    background: #ffffff;
     width: 100%;
     box-sizing: border-box;
-}
-
-/* Trix toolbar button styling */
-trix-toolbar .trix-button {
-    background: #fff !important;
-    border-radius: 4px;
-    border: none;
-    transition: background 0.2s;
-}
-
-trix-toolbar .trix-button:hover,
-trix-toolbar .trix-button:active,
-trix-toolbar .trix-button.trix-active {
-    background: cadetblue !important;
-    color: #fff !important;
 }
 
 /* Horizontal rule */
@@ -228,16 +174,18 @@ hr {
 
 /* Responsive adjustments */
 @media (max-width: 520px) {
-    .post-container {
-        padding: 1.25rem 1rem;
+    .event-container {
+        padding: 1.5rem 1rem;
         border-radius: 12px;
     }
 
-    .post-header .post-title {
-        font-size: 1.8rem;
+    .event-title {
+        font-size: 2rem;
     }
 
-    .reply-form button, .new-message-form button {
+    .reply-form button,
+    .new-message-form button,
+    .paypal-btn {
         width: 100%;
         padding: 0.75rem;
     }
